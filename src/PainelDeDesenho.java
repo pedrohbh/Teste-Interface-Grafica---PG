@@ -20,10 +20,13 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     public static boolean exibirMalha = false;
     public static boolean pintaQuadradoOrigem = false;
     public static boolean pintaQuadradoDestino = false;
+    public static boolean desenhaRota = false;
     public static int quadradoIDOrigem = 0;
     public static int quadradoIDDestino = 0;
     public static BotaoSelecionado botaoSelecionado = BotaoSelecionado.NENHUM;
     public static List<Integer> valoresMalha = new ArrayList<>();
+    public static Grafo novoGrafo;
+    public static int []antecessores = null;
     
     private void contabilizaValoresMalha()
     {
@@ -41,10 +44,9 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     {   
         initComponents();
         contabilizaValoresMalha();
-        Grafo novoGrafo = new Grafo();
+        novoGrafo = new Grafo();
         novoGrafo.geraGrafoGrafico( 500, 25 );
-        
-        
+        antecessores = new int[ ( 500 / 25 ) * ( 500 / 25 ) ];       
     }
 
     @Override
@@ -66,6 +68,19 @@ public class PainelDeDesenho extends javax.swing.JPanel {
             int x = (quadradoIDDestino % 20) * 25;
             int y = (quadradoIDDestino / 20) * 25;
             g.fillRect( x, y, 25, 25);
+        }
+        
+        if ( desenhaRota && antecessores != null )
+        {
+            g.setColor( Color.YELLOW );
+            int verticeEscolhido = quadradoIDDestino;
+            while ( verticeEscolhido != quadradoIDOrigem )
+            {
+                verticeEscolhido = antecessores[ verticeEscolhido ];
+                int x = (verticeEscolhido % 20) * 25;
+                int y = (verticeEscolhido / 20) * 25;
+                g.fillRect( x, y, 25, 25);
+            }
         }
         
         g.setColor(Color.RED);

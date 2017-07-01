@@ -46,6 +46,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         botaoOrigem = new javax.swing.JRadioButton();
         botaoDestino = new javax.swing.JRadioButton();
         botaoNenhum = new javax.swing.JRadioButton();
+        botaoCalculaCaminho = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoCalculaCaminho.setText("Calcula Caminho");
+        botaoCalculaCaminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCalculaCaminhoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +116,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botaoMalha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoMalha)
+                    .addComponent(botaoCalculaCaminho))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -123,6 +133,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tamanhoDaMalhaAjustor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botaoCalculaCaminho, botaoMalha});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -137,8 +150,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         .addComponent(tamanhoDaMalhaDescritor)
                         .addComponent(tamanhoDaMalhaAjustor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoNenhum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoNenhum)
+                    .addComponent(botaoCalculaCaminho))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(debugLabel)
                 .addContainerGap())
         );
@@ -171,6 +186,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void botaoNenhumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNenhumActionPerformed
         PainelDeDesenho.botaoSelecionado = BotaoSelecionado.NENHUM;
     }//GEN-LAST:event_botaoNenhumActionPerformed
+
+    private void botaoCalculaCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCalculaCaminhoActionPerformed
+        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+        PainelDeDesenho.desenhaRota = true;
+        repaint();
+    }//GEN-LAST:event_botaoCalculaCaminhoActionPerformed
 
     private class MouseHandler implements MouseMotionListener, MouseListener
     {
@@ -282,6 +303,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NewJPanel;
+    private javax.swing.JButton botaoCalculaCaminho;
     private javax.swing.JRadioButton botaoDestino;
     private javax.swing.JToggleButton botaoMalha;
     private javax.swing.JRadioButton botaoNenhum;

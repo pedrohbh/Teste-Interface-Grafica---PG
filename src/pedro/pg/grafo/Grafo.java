@@ -158,7 +158,7 @@ public class Grafo
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i-1) * intervalo + j, 10) );
                     numeroArestas++;
                 }
-                if ( i < intervalo )
+                if ( i < (intervalo-1) )
                 {
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1)*intervalo + j, 10 ) );
                     numeroArestas++;
@@ -168,7 +168,7 @@ public class Grafo
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, i * intervalo + (j-1), 10) );
                     numeroArestas++;
                 }
-                if ( j < intervalo )
+                if ( j < (intervalo-1) )
                 {
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, i * intervalo + (j+1), 10) );
                     numeroArestas++;
@@ -182,20 +182,20 @@ public class Grafo
                 }
                 
                 // Diagonal Superior Direita
-                if ( i > 0 && j < intervalo )
+                if ( i > 0 && j < (intervalo-1) )
                 {
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i-1) * intervalo + (j+1), 14) );
                     numeroArestas++;
                 }
                 
                 // Diagonal Inferior Esquerda
-                if ( i < intervalo && j > 0 )
+                if ( i < (intervalo-1) && j > 0 )
                 {
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1) * intervalo + (j-1), 14) );
                     numeroArestas++;
                 }
                 
-                if ( i < intervalo && j < intervalo )
+                if ( i < (intervalo-1) && j < (intervalo-1) )
                 {
                     verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1) * intervalo + (j+1), 14) );
                     numeroArestas++;
@@ -1464,7 +1464,7 @@ public class Grafo
         }
     }
     
-    public void dijkstraHeapBinario( int idOrigem, int idObjetivo )
+    public int []dijkstraHeapBinario( int idOrigem )
     {
         HeapBinario heap = new HeapBinario( getNumeroVertices() );
         int []antecessor = new int[ getNumeroVertices() ];
@@ -1516,13 +1516,13 @@ public class Grafo
         
         //imprimeDistanciaEAntecessor(antecessor, distancias, "/home/administrador/Área de Trabalho/Testes/ResultadoDijkstraHeapBinarioNovo.txt");
         
-        if ( idObjetivo >= 0 )
+        /*if ( idObjetivo >= 0 )
         {
             System.out.println("Mostrando para Dijkstra");
             publicaCaminho(antecessor, idOrigem, idObjetivo );
             System.out.println("Custo total para o vértice " + idObjetivo + ": " + distancias[ idObjetivo ] );
             System.out.printf("Fim Dijkstra%n%n");            
-        }
+        }*/
         
         
         
@@ -1532,6 +1532,8 @@ public class Grafo
             System.out.printf("Distância( %d ): %d%n", i, distanciaHeuristica[ i ] );
             //System.out.printf("Antecessor( %d ): %d%n", i, antecessor[ i ] );
         }*/
+        
+        return antecessor;
         
     }
      
