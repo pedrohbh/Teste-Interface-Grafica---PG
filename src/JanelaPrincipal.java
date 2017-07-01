@@ -21,6 +21,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
      */
     public JanelaPrincipal() 
     {
+        super("Grafo Gráfico");
         initComponents();
         
         MouseHandler mouseHandler = new MouseHandler();
@@ -212,6 +213,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         @Override
         public void mouseClicked(MouseEvent e) 
         {
+            
             debugLabel.setText(String.format("Mouse clicado nas posições (%d,%d).", e.getX(), e.getY() ) );
             if ( e.getButton() == MouseEvent.BUTTON2 || e.getButton() == MouseEvent.BUTTON3 )
             {
@@ -224,11 +226,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 {
                     PainelDeDesenho.quadradoIDOrigem = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
                     PainelDeDesenho.pintaQuadradoOrigem = true;
+                    if ( PainelDeDesenho.desenhaRota )
+                        PainelDeDesenho.desenhaRota = false;
                 }
                 else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.DESTINO )
                 {
                     PainelDeDesenho.quadradoIDDestino = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
                     PainelDeDesenho.pintaQuadradoDestino = true;
+                    if ( PainelDeDesenho.desenhaRota )
+                        PainelDeDesenho.desenhaRota = false;
                 }
             }
             repaint();

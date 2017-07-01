@@ -73,13 +73,13 @@ public class PainelDeDesenho extends javax.swing.JPanel {
         if ( desenhaRota && antecessores != null )
         {
             g.setColor( Color.YELLOW );
-            int verticeEscolhido = quadradoIDDestino;
+            int verticeEscolhido = antecessores[ quadradoIDDestino ];
             while ( verticeEscolhido != quadradoIDOrigem )
             {
-                verticeEscolhido = antecessores[ verticeEscolhido ];
                 int x = (verticeEscolhido % 20) * 25;
                 int y = (verticeEscolhido / 20) * 25;
                 g.fillRect( x, y, 25, 25);
+                verticeEscolhido = antecessores[ verticeEscolhido ];
             }
         }
         
