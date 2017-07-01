@@ -17,8 +17,11 @@ import java.util.List;
 public class PainelDeDesenho extends javax.swing.JPanel {
 
     public static boolean exibirMalha = false;
-    public static boolean pintaQuadrado = false;
-    public static int quadradoID = 0;
+    public static boolean pintaQuadradoOrigem = false;
+    public static boolean pintaQuadradoDestino = false;
+    public static int quadradoIDOrigem = 0;
+    public static int quadradoIDDestino = 0;
+    public static BotaoSelecionado botaoSelecionado = BotaoSelecionado.NENHUM;
     public static List<Integer> valoresMalha = new ArrayList<>();
     
     private void contabilizaValoresMalha()
@@ -44,11 +47,19 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         
-        if ( pintaQuadrado )
+        if ( pintaQuadradoOrigem )
         {
             g.setColor(Color.GREEN);
-            int x = (quadradoID % 20) * 25;
-            int y = (quadradoID / 20) * 25;
+            int x = (quadradoIDOrigem % 20) * 25;
+            int y = (quadradoIDOrigem / 20) * 25;
+            g.fillRect( x, y, 25, 25);
+        }
+        
+        if ( pintaQuadradoDestino )
+        {
+            g.setColor(Color.BLUE);
+            int x = (quadradoIDDestino % 20) * 25;
+            int y = (quadradoIDDestino / 20) * 25;
             g.fillRect( x, y, 25, 25);
         }
         

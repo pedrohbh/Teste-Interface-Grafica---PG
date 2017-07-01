@@ -37,11 +37,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoBotoesVertice = new javax.swing.ButtonGroup();
         NewJPanel = new PainelDeDesenho();
         botaoMalha = new javax.swing.JToggleButton();
         tamanhoDaMalhaDescritor = new javax.swing.JLabel();
         tamanhoDaMalhaAjustor = new javax.swing.JSpinner();
         debugLabel = new javax.swing.JLabel();
+        botaoOrigem = new javax.swing.JRadioButton();
+        botaoDestino = new javax.swing.JRadioButton();
+        botaoNenhum = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,22 +73,55 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         tamanhoDaMalhaAjustor.setEditor(new javax.swing.JSpinner.NumberEditor(tamanhoDaMalhaAjustor, ""));
         tamanhoDaMalhaAjustor.setValue(2);
 
+        grupoBotoesVertice.add(botaoOrigem);
+        botaoOrigem.setText("Origem");
+        botaoOrigem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoOrigemActionPerformed(evt);
+            }
+        });
+
+        grupoBotoesVertice.add(botaoDestino);
+        botaoDestino.setText("Destino");
+        botaoDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDestinoActionPerformed(evt);
+            }
+        });
+
+        grupoBotoesVertice.add(botaoNenhum);
+        botaoNenhum.setText("Nenhum");
+        botaoNenhum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoNenhumActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botaoMalha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tamanhoDaMalhaDescritor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tamanhoDaMalhaAjustor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NewJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(debugLabel))
                 .addGap(0, 2, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botaoMalha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoNenhum)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoOrigem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoDestino)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tamanhoDaMalhaDescritor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tamanhoDaMalhaAjustor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +129,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addComponent(NewJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoMalha)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botaoMalha)
+                        .addComponent(botaoOrigem)
+                        .addComponent(botaoDestino))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tamanhoDaMalhaDescritor)
                         .addComponent(tamanhoDaMalhaAjustor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoNenhum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(debugLabel)
                 .addContainerGap())
         );
@@ -117,6 +159,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             repaint();
         }
     }//GEN-LAST:event_botaoMalhaActionPerformed
+
+    private void botaoOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoOrigemActionPerformed
+        PainelDeDesenho.botaoSelecionado = BotaoSelecionado.ORIGEM;
+    }//GEN-LAST:event_botaoOrigemActionPerformed
+
+    private void botaoDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDestinoActionPerformed
+        PainelDeDesenho.botaoSelecionado = BotaoSelecionado.DESTINO;
+    }//GEN-LAST:event_botaoDestinoActionPerformed
+
+    private void botaoNenhumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNenhumActionPerformed
+        PainelDeDesenho.botaoSelecionado = BotaoSelecionado.NENHUM;
+    }//GEN-LAST:event_botaoNenhumActionPerformed
 
     private class MouseHandler implements MouseMotionListener, MouseListener
     {
@@ -139,11 +193,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         {
             debugLabel.setText(String.format("Mouse clicado nas posições (%d,%d).", e.getX(), e.getY() ) );
             if ( e.getButton() == MouseEvent.BUTTON2 || e.getButton() == MouseEvent.BUTTON3 )
-                PainelDeDesenho.pintaQuadrado = false;
+            {
+                PainelDeDesenho.pintaQuadradoOrigem = false;
+                PainelDeDesenho.pintaQuadradoDestino = false;
+            }
             else
             {
-                PainelDeDesenho.quadradoID = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
-                PainelDeDesenho.pintaQuadrado = true;
+                if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.ORIGEM )
+                {
+                    PainelDeDesenho.quadradoIDOrigem = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
+                    PainelDeDesenho.pintaQuadradoOrigem = true;
+                }
+                else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.DESTINO )
+                {
+                    PainelDeDesenho.quadradoIDDestino = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
+                    PainelDeDesenho.pintaQuadradoDestino = true;
+                }
             }
             repaint();
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -217,8 +282,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NewJPanel;
+    private javax.swing.JRadioButton botaoDestino;
     private javax.swing.JToggleButton botaoMalha;
+    private javax.swing.JRadioButton botaoNenhum;
+    private javax.swing.JRadioButton botaoOrigem;
     private javax.swing.JLabel debugLabel;
+    private javax.swing.ButtonGroup grupoBotoesVertice;
     private javax.swing.JSpinner tamanhoDaMalhaAjustor;
     private javax.swing.JLabel tamanhoDaMalhaDescritor;
     // End of variables declaration//GEN-END:variables
