@@ -2,7 +2,7 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.SpinnerModel;
+import pedro.pg.grafo.Grafo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

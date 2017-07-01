@@ -138,6 +138,72 @@ public class Grafo
                 System.out.printf("%d ", verticesChegaveis.get( i ) );
         }
     }
+    
+    public void geraGrafoGrafico( int tamanhoMalha, int separador )
+    {
+        int intervalo = tamanhoMalha / separador;
+        verticesGrafo = new Vertice[ intervalo * intervalo ];
+        numeroVertices = intervalo * intervalo;
+        numeroArestas = 0;
+        for ( int i = 0; i < intervalo; i++ )
+        {            
+            for ( int j = 0; j < intervalo; j++ )
+            {
+                int idVertice = i * intervalo + j; 
+                verticesGrafo[ idVertice ] = new Vertice(idVertice);
+                verticesGrafo[ idVertice ].idVertice = idVertice;
+                verticesGrafo[ idVertice ].arestasAdjacentes = new LinkedList<>();
+                if ( i > 0 )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i-1) * intervalo + j, 10) );
+                    numeroArestas++;
+                }
+                if ( i < intervalo )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1)*intervalo + j, 10 ) );
+                    numeroArestas++;
+                }
+                if ( j > 0 )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, i * intervalo + (j-1), 10) );
+                    numeroArestas++;
+                }
+                if ( j < intervalo )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, i * intervalo + (j+1), 10) );
+                    numeroArestas++;
+                }
+                // Diagonais
+                // Diagonal Superior Esquerda
+                if ( i > 0 && j > 0)
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i-1) * intervalo + (j-1), 14) );
+                    numeroArestas++;
+                }
+                
+                // Diagonal Superior Direita
+                if ( i > 0 && j < intervalo )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i-1) * intervalo + (j+1), 14) );
+                    numeroArestas++;
+                }
+                
+                // Diagonal Inferior Esquerda
+                if ( i < intervalo && j > 0 )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1) * intervalo + (j-1), 14) );
+                    numeroArestas++;
+                }
+                
+                if ( i < intervalo && j < intervalo )
+                {
+                    verticesGrafo[ idVertice ].arestasAdjacentes.add( new Aresta( idVertice, (i+1) * intervalo + (j+1), 14) );
+                    numeroArestas++;
+                }
+                
+            }
+        }
+    }
                 
     public void dijkstraHeapFibonacci( int idOrigem )
     {

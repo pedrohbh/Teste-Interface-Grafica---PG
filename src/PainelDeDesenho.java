@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import pedro.pg.grafo.Grafo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,9 +38,13 @@ public class PainelDeDesenho extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     public PainelDeDesenho() 
-    {        
+    {   
         initComponents();
         contabilizaValoresMalha();
+        Grafo novoGrafo = new Grafo();
+        novoGrafo.geraGrafoGrafico( 500, 25 );
+        
+        
     }
 
     @Override
