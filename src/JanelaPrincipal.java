@@ -2,6 +2,7 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import javax.swing.JOptionPane;
 import pedro.pg.grafo.Grafo;
 
 /*
@@ -47,7 +48,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         botaoOrigem = new javax.swing.JRadioButton();
         botaoDestino = new javax.swing.JRadioButton();
         botaoNenhum = new javax.swing.JRadioButton();
-        botaoCalculaCaminho = new javax.swing.JButton();
+        botaoCalculaCaminho = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,7 +155,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoNenhum)
                     .addComponent(botaoCalculaCaminho))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(debugLabel)
                 .addContainerGap())
         );
@@ -189,8 +190,23 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoNenhumActionPerformed
 
     private void botaoCalculaCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCalculaCaminhoActionPerformed
-        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
-        PainelDeDesenho.desenhaRota = true;
+        if ( PainelDeDesenho.pintaQuadradoDestino == false || PainelDeDesenho.pintaQuadradoOrigem == false )
+        {
+            JOptionPane.showMessageDialog( this, "Aviso: O ponto de origem ou destino não foram especificados.\nDetermine-os e tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            botaoCalculaCaminho.setSelected(false);
+        }
+        else
+        {
+            if ( PainelDeDesenho.desenhaRota )
+            {
+                PainelDeDesenho.desenhaRota = false;
+            }
+            else
+            {
+                PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+                PainelDeDesenho.desenhaRota = true;
+            }
+        }
         repaint();
     }//GEN-LAST:event_botaoCalculaCaminhoActionPerformed
 
@@ -219,6 +235,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             {
                 PainelDeDesenho.pintaQuadradoOrigem = false;
                 PainelDeDesenho.pintaQuadradoDestino = false;
+                PainelDeDesenho.desenhaRota = false;
+                botaoCalculaCaminho.setSelected( false );
             }
             else
             {
@@ -227,14 +245,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     PainelDeDesenho.quadradoIDOrigem = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
                     PainelDeDesenho.pintaQuadradoOrigem = true;
                     if ( PainelDeDesenho.desenhaRota )
-                        PainelDeDesenho.desenhaRota = false;
+                    {
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+                        //PainelDeDesenho.desenhaRota = false;
+                    }
                 }
                 else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.DESTINO )
                 {
                     PainelDeDesenho.quadradoIDDestino = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
                     PainelDeDesenho.pintaQuadradoDestino = true;
                     if ( PainelDeDesenho.desenhaRota )
-                        PainelDeDesenho.desenhaRota = false;
+                    {
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+        
+                        //PainelDeDesenho.desenhaRota = false;
+                    }
                 }
             }
             repaint();
@@ -309,7 +334,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NewJPanel;
-    private javax.swing.JButton botaoCalculaCaminho;
+    private javax.swing.JToggleButton botaoCalculaCaminho;
     private javax.swing.JRadioButton botaoDestino;
     private javax.swing.JToggleButton botaoMalha;
     private javax.swing.JRadioButton botaoNenhum;
