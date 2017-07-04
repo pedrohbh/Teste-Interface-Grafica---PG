@@ -242,7 +242,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             {
                 if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.ORIGEM )
                 {
-                    PainelDeDesenho.quadradoIDOrigem = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
+                    PainelDeDesenho.quadradoIDOrigem = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
                     PainelDeDesenho.pintaQuadradoOrigem = true;
                     if ( PainelDeDesenho.desenhaRota )
                     {
@@ -252,7 +252,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 }
                 else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.DESTINO )
                 {
-                    PainelDeDesenho.quadradoIDDestino = (e.getX() / 25) + ( e.getY() / 25 ) * 20;
+                    PainelDeDesenho.quadradoIDDestino = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
                     PainelDeDesenho.pintaQuadradoDestino = true;
                     if ( PainelDeDesenho.desenhaRota )
                     {
