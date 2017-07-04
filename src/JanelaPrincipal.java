@@ -49,6 +49,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         botaoDestino = new javax.swing.JRadioButton();
         botaoNenhum = new javax.swing.JRadioButton();
         botaoCalculaCaminho = new javax.swing.JToggleButton();
+        botaoParede = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +108,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        grupoBotoesVertice.add(botaoParede);
+        botaoParede.setText("Parede");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,12 +127,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addComponent(botaoCalculaCaminho))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoOrigem)
+                    .addComponent(botaoNenhum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botaoNenhum)
+                        .addComponent(botaoParede)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botaoOrigem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botaoDestino)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tamanhoDaMalhaDescritor)
@@ -154,7 +160,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoNenhum)
-                    .addComponent(botaoCalculaCaminho))
+                    .addComponent(botaoCalculaCaminho)
+                    .addComponent(botaoParede))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(debugLabel)
                 .addContainerGap())
@@ -339,6 +346,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton botaoMalha;
     private javax.swing.JRadioButton botaoNenhum;
     private javax.swing.JRadioButton botaoOrigem;
+    private javax.swing.JRadioButton botaoParede;
     private javax.swing.JLabel debugLabel;
     private javax.swing.ButtonGroup grupoBotoesVertice;
     private javax.swing.JSpinner tamanhoDaMalhaAjustor;

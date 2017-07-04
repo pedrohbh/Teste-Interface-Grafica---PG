@@ -42,13 +42,16 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="botaoOrigem" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoNenhum" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="botaoNenhum" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoParede" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="botaoOrigem" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="botaoDestino" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="tamanhoDaMalhaDescritor" min="-2" max="-2" attributes="0"/>
@@ -79,6 +82,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoNenhum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoCalculaCaminho" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoParede" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="14" max="32767" attributes="0"/>
               <Component id="debugLabel" min="-2" max="-2" attributes="0"/>
@@ -174,6 +178,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCalculaCaminhoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="botaoParede">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="grupoBotoesVertice"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Parede"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
