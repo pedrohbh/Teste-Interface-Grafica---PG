@@ -186,6 +186,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Parede"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoParedeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

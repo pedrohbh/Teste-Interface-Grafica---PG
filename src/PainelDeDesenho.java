@@ -2,7 +2,9 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import pedro.pg.grafo.Grafo;
 
 /*
@@ -20,6 +22,7 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     public static boolean exibirMalha = false;
     public static boolean pintaQuadradoOrigem = false;
     public static boolean pintaQuadradoDestino = false;
+    public static boolean pintaParede = false;
     public static boolean desenhaRota = false;
     public static int quadradoIDOrigem = 0;
     public static int quadradoIDDestino = 0;
@@ -28,6 +31,7 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     public static int intervalo = 0;
     public static BotaoSelecionado botaoSelecionado = BotaoSelecionado.NENHUM;
     public static List<Integer> valoresMalha = new ArrayList<>();
+    public static Set<Integer> valoresParede = new HashSet<>();
     public static Grafo novoGrafo;
     public static int []antecessores = null;
     
@@ -72,6 +76,17 @@ public class PainelDeDesenho extends javax.swing.JPanel {
             int x = (quadradoIDDestino % valorDivisor) * intervalo;
             int y = (quadradoIDDestino / valorDivisor) * intervalo;
             g.fillRect( x, y, intervalo, intervalo);
+        }
+        
+        if ( pintaParede )
+        {
+            g.setColor(Color.LIGHT_GRAY);
+            for ( Integer e: valoresParede )
+            {
+                int x = (e % valorDivisor) * intervalo;
+                int y = (e / valorDivisor) * intervalo;
+                g.fillRect( x, y, intervalo, intervalo);
+            }
         }
         
         if ( desenhaRota && antecessores != null )

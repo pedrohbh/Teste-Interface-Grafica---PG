@@ -110,6 +110,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         grupoBotoesVertice.add(botaoParede);
         botaoParede.setText("Parede");
+        botaoParede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoParedeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,6 +222,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_botaoCalculaCaminhoActionPerformed
 
+    private void botaoParedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoParedeActionPerformed
+        PainelDeDesenho.botaoSelecionado = BotaoSelecionado.PAREDE;
+    }//GEN-LAST:event_botaoParedeActionPerformed
+
     private class MouseHandler implements MouseMotionListener, MouseListener
     {
 
@@ -267,6 +276,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
                         //PainelDeDesenho.desenhaRota = false;
                     }
+                }
+                else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.PAREDE )
+                {
+                    int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                    PainelDeDesenho.pintaParede = true;
+                    if ( !PainelDeDesenho.valoresParede.contains(id) )
+                        PainelDeDesenho.valoresParede.add(id);
                 }
             }
             repaint();

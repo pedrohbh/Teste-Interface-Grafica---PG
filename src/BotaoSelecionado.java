@@ -10,6 +10,6 @@
  */
 public enum BotaoSelecionado 
 {
-    ORIGEM, DESTINO, NENHUM
+    ORIGEM, DESTINO, PAREDE, NENHUM
     
 }
