@@ -232,6 +232,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         @Override
         public void mouseDragged(MouseEvent e) 
         {
+            debugLabel.setText(String.format("Mouse arrastado nas posições (%d,%d).", e.getX(), e.getY() ) );
+            if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.PAREDE )
+            {
+                int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                PainelDeDesenho.pintaParede = true;
+                if ( !PainelDeDesenho.valoresParede.contains(id) )
+                    PainelDeDesenho.valoresParede.add(id);
+            }
+            repaint();
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
@@ -249,10 +258,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             debugLabel.setText(String.format("Mouse clicado nas posições (%d,%d).", e.getX(), e.getY() ) );
             if ( e.getButton() == MouseEvent.BUTTON2 || e.getButton() == MouseEvent.BUTTON3 )
             {
-                PainelDeDesenho.pintaQuadradoOrigem = false;
-                PainelDeDesenho.pintaQuadradoDestino = false;
-                PainelDeDesenho.desenhaRota = false;
-                botaoCalculaCaminho.setSelected( false );
+                if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.PAREDE )
+                {
+                    int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                    if ( PainelDeDesenho.valoresParede.contains( id ) )
+                    {
+                        PainelDeDesenho.valoresParede.remove(id);
+                    }
+                }
+                else
+                {
+                    PainelDeDesenho.pintaQuadradoOrigem = false;
+                    PainelDeDesenho.pintaQuadradoDestino = false;
+                    PainelDeDesenho.desenhaRota = false;
+                    PainelDeDesenho.valoresParede.clear();
+                    botaoCalculaCaminho.setSelected( false );               
+                }
             }
             else
             {

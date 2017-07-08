@@ -27,7 +27,7 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     public static int quadradoIDOrigem = 0;
     public static int quadradoIDDestino = 0;
     public static int tamanhoDaMalha = 500;
-    public static int valorDivisor = 50;
+    public static int valorDivisor = 20;
     public static int intervalo = 0;
     public static BotaoSelecionado botaoSelecionado = BotaoSelecionado.NENHUM;
     public static List<Integer> valoresMalha = new ArrayList<>();
