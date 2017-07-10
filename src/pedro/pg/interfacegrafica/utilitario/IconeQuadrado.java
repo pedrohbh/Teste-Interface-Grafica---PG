@@ -1,3 +1,5 @@
+package pedro.pg.interfacegrafica.utilitario;
+
 
 import java.awt.Color;
 import java.awt.Component;

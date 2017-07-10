@@ -139,6 +139,14 @@ public class Grafo
         }
     }
     
+    public void atualizaGrafoGerado( Set<Integer> chaves )
+    {
+        for ( Integer e : chaves )
+        {   
+            
+        }
+    }
+    
     public void geraGrafoGrafico( int tamanhoMalha, int separador )
     {
         int intervalo = tamanhoMalha / separador;

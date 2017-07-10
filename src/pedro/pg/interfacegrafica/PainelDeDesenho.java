@@ -1,3 +1,5 @@
+package pedro.pg.interfacegrafica;
+
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -37,9 +39,9 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     
     private void contabilizaValoresMalha()
     {
-        for ( int i = 2; i <= 500; i++ )
+        for ( int i = 2; i <= tamanhoDaMalha; i++ )
         {
-            if ( 500 % i == 0 )
+            if ( tamanhoDaMalha % i == 0 )
                 valoresMalha.add(i);
         }
     }
