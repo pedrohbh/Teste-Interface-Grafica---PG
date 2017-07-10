@@ -264,6 +264,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
                     if ( PainelDeDesenho.valoresParede.contains( id ) )
                     {
+                        PainelDeDesenho.valoresRemovidosParede.add( id );
                         PainelDeDesenho.valoresParede.remove(id);
                     }
                 }

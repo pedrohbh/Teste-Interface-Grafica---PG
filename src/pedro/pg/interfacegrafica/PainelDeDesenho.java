@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import pedro.pg.grafo.Grafo;
@@ -34,6 +35,7 @@ public class PainelDeDesenho extends javax.swing.JPanel {
     public static BotaoSelecionado botaoSelecionado = BotaoSelecionado.NENHUM;
     public static List<Integer> valoresMalha = new ArrayList<>();
     public static Set<Integer> valoresParede = new HashSet<>();
+    public static List<Integer> valoresRemovidosParede = new LinkedList<>();
     public static Grafo novoGrafo;
     public static int []antecessores = null;
     

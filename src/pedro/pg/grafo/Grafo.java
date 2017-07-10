@@ -143,7 +143,17 @@ public class Grafo
     {
         for ( Integer e : chaves )
         {   
-            
+            for ( Aresta a: verticesGrafo[ e ].arestasAdjacentes )
+            {
+                for ( int i = 0; i < verticesGrafo[ a.idVerticeDestino ].arestasAdjacentes.size(); i++ )
+                {
+                    if ( verticesGrafo[ a.idVerticeDestino ].arestasAdjacentes.get( i ).idVerticeDestino == a.idVeticeOrigem )
+                    {
+                        verticesGrafo[ a.idVerticeDestino ].arestasAdjacentes.remove( i );
+                        break;
+                    }
+                }
+            }
         }
     }
     
