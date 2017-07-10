@@ -27,8 +27,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         MouseHandler mouseHandler = new MouseHandler();
-        NewJPanel.addMouseListener(mouseHandler);
-        NewJPanel.addMouseMotionListener(mouseHandler);
+        painelDeDesenho.addMouseListener(mouseHandler);
+        painelDeDesenho.addMouseMotionListener(mouseHandler);
     }
 
     /**
@@ -41,7 +41,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoBotoesVertice = new javax.swing.ButtonGroup();
-        NewJPanel = new PainelDeDesenho();
+        painelDeDesenho = new PainelDeDesenho();
         botaoMalha = new javax.swing.JToggleButton();
         tamanhoDaMalhaDescritor = new javax.swing.JLabel();
         tamanhoDaMalhaAjustor = new javax.swing.JSpinner();
@@ -54,14 +54,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout NewJPanelLayout = new javax.swing.GroupLayout(NewJPanel);
-        NewJPanel.setLayout(NewJPanelLayout);
-        NewJPanelLayout.setHorizontalGroup(
-            NewJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout painelDeDesenhoLayout = new javax.swing.GroupLayout(painelDeDesenho);
+        painelDeDesenho.setLayout(painelDeDesenhoLayout);
+        painelDeDesenhoLayout.setHorizontalGroup(
+            painelDeDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-        NewJPanelLayout.setVerticalGroup(
-            NewJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        painelDeDesenhoLayout.setVerticalGroup(
+            painelDeDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
@@ -123,7 +123,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NewJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelDeDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(debugLabel))
                 .addGap(0, 2, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -153,7 +153,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(NewJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelDeDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -383,7 +383,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel NewJPanel;
     private javax.swing.JToggleButton botaoCalculaCaminho;
     private javax.swing.JRadioButton botaoDestino;
     private javax.swing.JToggleButton botaoMalha;
@@ -392,6 +391,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton botaoParede;
     private javax.swing.JLabel debugLabel;
     private javax.swing.ButtonGroup grupoBotoesVertice;
+    private javax.swing.JPanel painelDeDesenho;
     private javax.swing.JSpinner tamanhoDaMalhaAjustor;
     private javax.swing.JLabel tamanhoDaMalhaDescritor;
     // End of variables declaration//GEN-END:variables
