@@ -216,7 +216,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
             else
             {
-                PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+                PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
                 PainelDeDesenho.desenhaRota = true;
             }
         }
@@ -285,7 +285,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     PainelDeDesenho.pintaQuadradoOrigem = true;
                     if ( PainelDeDesenho.desenhaRota )
                     {
-                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
                         //PainelDeDesenho.desenhaRota = false;
                     }
                 }
@@ -295,7 +295,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     PainelDeDesenho.pintaQuadradoDestino = true;
                     if ( PainelDeDesenho.desenhaRota )
                     {
-                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.dijkstraHeapBinario( PainelDeDesenho.quadradoIDOrigem );
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
         
                         //PainelDeDesenho.desenhaRota = false;
                     }
@@ -306,6 +306,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     PainelDeDesenho.pintaParede = true;
                     if ( !PainelDeDesenho.valoresParede.contains(id) )
                         PainelDeDesenho.valoresParede.add(id);
+                    if ( PainelDeDesenho.desenhaRota )
+                    {
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                    }
                 }
             }
             repaint();

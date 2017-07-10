@@ -85,6 +85,12 @@ public class Grafo
         
     }
     
+    public int []invocaFuncaoDeCalculoDeCaminho( int idOrigem, Set<Integer> chaves )
+    {
+        atualizaGrafoGerado(chaves);
+        return dijkstraHeapBinario(idOrigem);
+    }
+    
     private void dsfVisit( int id, Cores []cor, List<Integer> verticesChegaveis )
     {
         cor[ id ] = Cores.GRAY;
