@@ -240,9 +240,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 PainelDeDesenho.pintaParede = true;
                 if ( !PainelDeDesenho.valoresParede.contains(id) )
                     PainelDeDesenho.valoresParede.add(id);
+                
+                if ( PainelDeDesenho.desenhaRota )
+                {
+                    PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                }
+                repaint();               
             }
-            repaint();
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
         @Override
@@ -266,7 +270,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     {
                         PainelDeDesenho.valoresRemovidosParede.add( id );
                         PainelDeDesenho.valoresParede.remove(id);
-                    }
+                    }                   
                 }
                 else
                 {
@@ -279,37 +283,36 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
             else
             {
-                if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.ORIGEM )
-                {
-                    PainelDeDesenho.quadradoIDOrigem = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
-                    PainelDeDesenho.pintaQuadradoOrigem = true;
-                    if ( PainelDeDesenho.desenhaRota )
-                    {
-                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
-                        //PainelDeDesenho.desenhaRota = false;
-                    }
-                }
-                else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.DESTINO )
-                {
-                    PainelDeDesenho.quadradoIDDestino = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
-                    PainelDeDesenho.pintaQuadradoDestino = true;
-                    if ( PainelDeDesenho.desenhaRota )
-                    {
-                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
-        
-                        //PainelDeDesenho.desenhaRota = false;
-                    }
-                }
-                else if ( PainelDeDesenho.botaoSelecionado == BotaoSelecionado.PAREDE )
-                {
-                    int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
-                    PainelDeDesenho.pintaParede = true;
-                    if ( !PainelDeDesenho.valoresParede.contains(id) )
-                        PainelDeDesenho.valoresParede.add(id);
-                    if ( PainelDeDesenho.desenhaRota )
-                    {
-                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
-                    }
+                if ( null != PainelDeDesenho.botaoSelecionado )
+                switch (PainelDeDesenho.botaoSelecionado) {
+                    case ORIGEM:
+                        PainelDeDesenho.quadradoIDOrigem = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                        PainelDeDesenho.pintaQuadradoOrigem = true;
+                        if ( PainelDeDesenho.desenhaRota )
+                        {
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                            //PainelDeDesenho.desenhaRota = false;
+                        }   break;
+                    case DESTINO:
+                        PainelDeDesenho.quadradoIDDestino = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                        PainelDeDesenho.pintaQuadradoDestino = true;
+                        if ( PainelDeDesenho.desenhaRota )
+                        {
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                            
+                            //PainelDeDesenho.desenhaRota = false;
+                        }   break;
+                    case PAREDE:
+                        int id = (e.getX() / PainelDeDesenho.intervalo) + ( e.getY() / PainelDeDesenho.intervalo ) * PainelDeDesenho.valorDivisor;
+                        PainelDeDesenho.pintaParede = true;
+                        if ( !PainelDeDesenho.valoresParede.contains(id) )
+                            PainelDeDesenho.valoresParede.add(id);
+                        if ( PainelDeDesenho.desenhaRota )
+                        {
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                        }   break;
+                    default:
+                        break;
                 }
             }
             repaint();
