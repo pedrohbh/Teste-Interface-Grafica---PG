@@ -85,9 +85,9 @@ public class Grafo
         
     }
     
-    public int []invocaFuncaoDeCalculoDeCaminho( int idOrigem, Set<Integer> chaves )
+    public int []invocaFuncaoDeCalculoDeCaminho( int idOrigem, Set<Integer> chaves, List<Integer> paredesRemovidas )
     {
-        atualizaGrafoGerado(chaves);
+        atualizaGrafoGerado(chaves, paredesRemovidas);
         return dijkstraHeapBinario(idOrigem);
     }
     
@@ -145,7 +145,7 @@ public class Grafo
         }
     }
     
-    public void atualizaGrafoGerado( Set<Integer> chaves )
+    public void atualizaGrafoGerado( Set<Integer> chaves, List<Integer> paredesRemovidas )
     {
         for ( Integer e : chaves )
         {   
@@ -161,6 +161,19 @@ public class Grafo
                 }
             }
         }
+        
+        
+        // Trato das paredes que foram removidas
+        for ( Integer e: paredesRemovidas )
+        {
+            for ( Aresta a: verticesGrafo[ e ].arestasAdjacentes )
+            {
+                Aresta novaAresta = new Aresta( a.idVerticeDestino, e, a.peso);
+                verticesGrafo[ a.idVerticeDestino ].arestasAdjacentes.add( novaAresta );
+            }
+            
+        }
+        paredesRemovidas.clear();
     }
     
     public void geraGrafoGrafico( int tamanhoMalha, int separador )

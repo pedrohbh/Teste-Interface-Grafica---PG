@@ -216,7 +216,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
             else
             {
-                PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
                 PainelDeDesenho.desenhaRota = true;
             }
         }
@@ -243,7 +243,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 
                 if ( PainelDeDesenho.desenhaRota )
                 {
-                    PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                    PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
                 }
                 repaint();               
             }
@@ -270,7 +270,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     {
                         PainelDeDesenho.valoresRemovidosParede.add( id );
                         PainelDeDesenho.valoresParede.remove(id);
-                    }                   
+                        PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
+                        repaint();
+                    }
+                    
                 }
                 else
                 {
@@ -290,7 +293,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         PainelDeDesenho.pintaQuadradoOrigem = true;
                         if ( PainelDeDesenho.desenhaRota )
                         {
-                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
                             //PainelDeDesenho.desenhaRota = false;
                         }   break;
                     case DESTINO:
@@ -298,7 +301,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                         PainelDeDesenho.pintaQuadradoDestino = true;
                         if ( PainelDeDesenho.desenhaRota )
                         {
-                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
                             
                             //PainelDeDesenho.desenhaRota = false;
                         }   break;
@@ -309,7 +312,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                             PainelDeDesenho.valoresParede.add(id);
                         if ( PainelDeDesenho.desenhaRota )
                         {
-                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede );
+                            PainelDeDesenho.antecessores = PainelDeDesenho.novoGrafo.invocaFuncaoDeCalculoDeCaminho( PainelDeDesenho.quadradoIDOrigem, PainelDeDesenho.valoresParede, PainelDeDesenho.valoresRemovidosParede );
                         }   break;
                     default:
                         break;
